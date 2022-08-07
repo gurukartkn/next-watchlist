@@ -1,11 +1,12 @@
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-const Series = ({ genres, tv, id }) => {
+import Pagination from "../../components/Pagination";
+
+const Series = ({ genres, tv, id, page }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
-  const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -47,6 +48,7 @@ const Series = ({ genres, tv, id }) => {
           </Link>
         ))}
       </div>
+      <Pagination section="tv" id={id} page={page} />
     </div>
   );
 };
@@ -54,7 +56,9 @@ const Series = ({ genres, tv, id }) => {
 export default Series;
 
 export async function getServerSideProps(context) {
-  const { id } = context.query;
+  let { id, page } = context.query;
+
+  if (page === undefined) page = 1;
 
   const gres = await fetch(
     `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
@@ -63,7 +67,7 @@ export async function getServerSideProps(context) {
   const genres = gdata.genres;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_genres=${id}`
+    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}&with_genres=${id}&page=${page}`
   );
   const data = await res.json();
   const tv = data.results;
@@ -72,6 +76,7 @@ export async function getServerSideProps(context) {
       tv,
       genres,
       id,
+      page,
     },
   };
 }
