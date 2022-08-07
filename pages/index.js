@@ -11,7 +11,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p className="text-3xl font-bold font-mono">tailwind works</p>
+      Home
     </div>
   );
 }
