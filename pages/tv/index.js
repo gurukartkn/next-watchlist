@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 
-const Movies = ({ genres }) => {
+const Series = ({ genres }) => {
   return (
     <div>
       <Head>
-        <title>WatchList | Movies</title>
+        <title>WatchList | Series</title>
         <meta
           name="description"
           content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"
@@ -16,7 +16,7 @@ const Movies = ({ genres }) => {
         {genres.map((genre) => (
           <Link
             className="text-gray-700"
-            href={`/movies/${encodeURIComponent(genre.id)}`}
+            href={`/tv/${encodeURIComponent(genre.id)}`}
             key={genre.id}
           >
             {genre.name}
@@ -27,11 +27,11 @@ const Movies = ({ genres }) => {
   );
 };
 
-export default Movies;
+export default Series;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
   );
   const data = await res.json();
   const genres = data.genres;

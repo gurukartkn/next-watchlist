@@ -10,7 +10,7 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <nav className="p-5 lg:p-10 xl:px-20 flex justify-between items-center sticky top-0">
+    <nav className="bg-white shadow-lg p-5 mb-8 lg:px-10 xl:px-20 flex justify-between items-center sticky top-0 z-10">
       <div className="flex items-center justify-between w-4/5 lg:w-1/2">
         <Link href="/" exact>
           <a className="flex items-center gap-1">
@@ -37,10 +37,10 @@ const Navbar = () => {
             <p>Movies</p>
           </a>
         </Link>
-        <Link href="/series">
+        <Link href="/tv">
           <a
             className={`${
-              router.pathname == "/series"
+              router.pathname == "/tv"
                 ? "text-black font-bold"
                 : "text-gray-700"
             }`}
