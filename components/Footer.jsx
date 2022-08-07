@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="flex justify-center font-mono">
+    <footer className="flex justify-center text-center font-mono">
       © {new Date().getFullYear()} - WatchList™. All Rights Reserved.
     </footer>
   );
