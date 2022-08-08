@@ -2,7 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 import CardRow from "../../components/CardRow";
-import Latest from "../../components/Latest";
 
 const Movies = ({ genres }) => {
   return (
@@ -43,7 +42,7 @@ const Movies = ({ genres }) => {
         <CardRow
           section="movie"
           type="top_rated"
-          title="Top RatedMovies"
+          title="Top Rated Movies"
           redirect="movie"
         />
         <CardRow

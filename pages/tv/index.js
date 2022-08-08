@@ -2,7 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 import CardRow from "../../components/CardRow";
-import Latest from "../../components/Latest";
 
 const Series = ({ genres }) => {
   return (
