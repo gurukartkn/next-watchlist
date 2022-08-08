@@ -58,13 +58,13 @@ export async function getServerSideProps(context) {
   if (page === undefined) page = 1;
 
   const gres = await fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
   );
   const gdata = await gres.json();
   const genres = gdata.genres;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${id}&page=${page}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=${id}&page=${page}`
   );
   const data = await res.json();
   const movies = data.results;

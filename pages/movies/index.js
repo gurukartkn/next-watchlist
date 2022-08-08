@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import CardRow from "../../components/CardRow";
+import Latest from "../../components/Latest";
+
 const Movies = ({ genres }) => {
   return (
-    <div>
+    <div className="px-5 md:px-10 lg:px-20 xl:px-36 ">
       <Head>
         <title>WatchList | Movies</title>
         <meta
@@ -12,7 +15,7 @@ const Movies = ({ genres }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex gap-3 md:gap-10 lg:gap-20 px-5 md:px-10 lg:px-20 xl:px-36 overflow-x-scroll scrollbar-hide">
+      <div className="flex gap-3 md:gap-10 lg:gap-20 overflow-x-scroll scrollbar-hide">
         {genres.map((genre) => (
           <Link
             className="text-gray-700"
@@ -23,6 +26,13 @@ const Movies = ({ genres }) => {
           </Link>
         ))}
       </div>
+      <div>
+        <Latest section="movie" />
+        <CardRow section="movie" type="now_playing" />
+        <CardRow section="movie" type="popular" />
+        <CardRow section="movie" type="top_rated" />
+        <CardRow section="movie" type="upcoming" />
+      </div>
     </div>
   );
 };
@@ -31,7 +41,7 @@ export default Movies;
 
 export async function getServerSideProps() {
   const res = await fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
   );
   const data = await res.json();
   const genres = data.genres;
