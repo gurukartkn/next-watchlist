@@ -27,11 +27,31 @@ const Movies = ({ genres }) => {
         ))}
       </div>
       <div>
-        <Latest section="movie" />
-        <CardRow section="movie" type="now_playing" />
-        <CardRow section="movie" type="popular" />
-        <CardRow section="movie" type="top_rated" />
-        <CardRow section="movie" type="upcoming" />
+        {/* <Latest section="movie" /> */}
+        <CardRow
+          section="movie"
+          type="now_playing"
+          title="Now Playing Movies"
+          redirect="movie"
+        />
+        <CardRow
+          section="movie"
+          type="popular"
+          title="Popular Movies"
+          redirect="movie"
+        />
+        <CardRow
+          section="movie"
+          type="top_rated"
+          title="Top RatedMovies"
+          redirect="movie"
+        />
+        <CardRow
+          section="movie"
+          type="upcoming"
+          title="Upcoming Movies"
+          redirect="movie"
+        />
       </div>
     </div>
   );

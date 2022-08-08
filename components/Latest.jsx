@@ -11,20 +11,19 @@ const Latest = ({ section }) => {
         `https://api.themoviedb.org/3/${section}/latest?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
       );
       const json = await res.json();
-      console.log(json);
       setData(json);
     };
     getData();
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="h-screen">
+    <div className="h-[75vh]">
       <h1 className="capitalize text-xl font-bold">Trending {section}</h1>
       <Link href={`/${section}/${encodeURIComponent(data?.id)}`}>
         <Image
           src={`${BASE_URL}${data?.backdrop_path} `}
           alt={data?.title}
-          height={1080}
+          height={780}
           width={1920}
           layout="responsive"
         />

@@ -26,11 +26,31 @@ const Series = ({ genres }) => {
           </Link>
         ))}
       </div>
-      <Latest section="tv" />
-      <CardRow section="tv" type="airing_today" />
-      <CardRow section="tv" type="on_the_air" />
-      <CardRow section="tv" type="top_rated" />
-      <CardRow section="tv" type="popular" />
+      {/* <Latest section="tv" /> */}
+      <CardRow
+        section="tv"
+        type="airing_today"
+        title="TV Shows Airing Today"
+        redirect="series"
+      />
+      <CardRow
+        section="tv"
+        type="on_the_air"
+        title="TV Shows on the Air"
+        redirect="series"
+      />
+      <CardRow
+        section="tv"
+        type="top_rated"
+        title="Top Rated TV Shows"
+        redirect="series"
+      />
+      <CardRow
+        section="tv"
+        type="popular"
+        title=" Popular TV Shows"
+        redirect="series"
+      />
     </div>
   );
 };

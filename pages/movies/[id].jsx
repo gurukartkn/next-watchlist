@@ -8,7 +8,7 @@ const Movie = ({ movies, genres, id, page }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
 
   return (
-    <div className="px-5 ">
+    <div className="px-5 md:px-10 lg:px-20 xl:px-36">
       <Head>
         <title>WatchList | Movies | {id}</title>
         <meta
@@ -17,7 +17,7 @@ const Movie = ({ movies, genres, id, page }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex gap-3 md:gap-10 lg:gap-20 px-5 md:px-10 lg:px-20 xl:px-36 overflow-x-scroll scrollbar-hide">
+      <div className="flex gap-3 md:gap-10 lg:gap-20 overflow-x-scroll scrollbar-hide">
         {genres.map((genre) => (
           <Link href={`/movies/${encodeURIComponent(genre.id)}`} key={genre.id}>
             <p
@@ -45,7 +45,7 @@ const Movie = ({ movies, genres, id, page }) => {
           </Link>
         ))}
       </div>
-      <Pagination section="movies" id={id} page={page} />
+      <Pagination section="movies" id={id} page={page} pages="500" />
     </div>
   );
 };

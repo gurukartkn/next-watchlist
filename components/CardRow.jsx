@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const CardRow = ({ section, type }) => {
+const CardRow = ({ section, type, title, redirect }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -20,12 +20,12 @@ const CardRow = ({ section, type }) => {
 
   return (
     <div className="flex flex-col justify-start">
-      <h1 className="capitalize text-xl font-bold">{type}</h1>
+      <h1 className="capitalize text-xl font-bold">{title}</h1>
 
       <div className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide">
         {data?.map((d) => (
-          <Link href={`/${section}/${encodeURIComponent(d.id)}`} key={d.id}>
-            <div className="min-w-[250px] left-0 cursor-pointer hover:scale-105 ease-in-out">
+          <Link href={`/${redirect}/${encodeURIComponent(d.id)}`} key={d.id}>
+            <div className="min-w-[100px] md:min-w-[150px] xl:min-w-[250px] left-0 cursor-pointer hover:scale-105 ease-in-out">
               <Image
                 src={`${BASE_URL}${d.poster_path}`}
                 alt={d.title}
