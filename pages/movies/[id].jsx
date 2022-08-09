@@ -1,13 +1,10 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 
 import CardItem from "../../components/CardItem";
 import Pagination from "../../components/Pagination";
 
 const Movie = ({ movies, genres, id, page }) => {
-  const BASE_URL = "https://image.tmdb.org/t/p/original";
-
   return (
     <div>
       <Head>

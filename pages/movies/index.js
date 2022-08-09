@@ -14,43 +14,43 @@ const Movies = ({ genres }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex gap-3 md:gap-10 lg:gap-20 overflow-x-scroll scrollbar-hide">
-        {genres.map((genre) => (
-          <Link
-            className="text-gray-700"
-            href={`/movies/${encodeURIComponent(genre.id)}`}
-            key={genre.id}
-          >
-            {genre.name}
-          </Link>
-        ))}
-      </div>
       <div>
         {/* <Latest section="movie" /> */}
-        <CardRow
-          section="movie"
-          type="now_playing"
-          title="Now Playing Movies"
-          redirect="movie"
-        />
         <CardRow
           section="movie"
           type="popular"
           title="Popular Movies"
           redirect="movie"
+          genreRedirect="movies"
+          id=""
         />
         <CardRow
           section="movie"
           type="top_rated"
           title="Top Rated Movies"
           redirect="movie"
+          genreRedirect="movies"
+          id=""
         />
         <CardRow
           section="movie"
           type="upcoming"
           title="Upcoming Movies"
           redirect="movie"
+          genreRedirect="movies"
+          id=""
         />
+        {genres.map((genre) => (
+          <CardRow
+            section="movie"
+            type="genre"
+            title={genre.name + ` ` + `Movies`}
+            redirect="movie"
+            genreRedirect="movies"
+            id={genre.id}
+            key={genre.id}
+          />
+        ))}
       </div>
     </div>
   );

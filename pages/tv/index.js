@@ -14,42 +14,42 @@ const Series = ({ genres }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex gap-3 md:gap-10 lg:gap-20 overflow-x-scroll scrollbar-hide">
-        {genres.map((genre) => (
-          <Link
-            className="text-gray-700"
-            href={`/tv/${encodeURIComponent(genre.id)}`}
-            key={genre.id}
-          >
-            {genre.name}
-          </Link>
-        ))}
-      </div>
       {/* <Latest section="tv" /> */}
-      <CardRow
-        section="tv"
-        type="airing_today"
-        title="TV Shows Airing Today"
-        redirect="series"
-      />
       <CardRow
         section="tv"
         type="on_the_air"
         title="TV Shows on the Air"
         redirect="series"
+        genreRedirect="tv"
+        id=""
       />
       <CardRow
         section="tv"
         type="top_rated"
         title="Top Rated TV Shows"
         redirect="series"
+        genreRedirect="tv"
+        id=""
       />
       <CardRow
         section="tv"
         type="popular"
         title=" Popular TV Shows"
         redirect="series"
+        genreRedirect="tv"
+        id=""
       />
+      {genres.map((genre) => (
+        <CardRow
+          section="tv"
+          type="genre"
+          title={genre.name}
+          redirect="series"
+          genreRedirect="tv"
+          id={genre.id}
+          key={genre.id}
+        />
+      ))}
     </div>
   );
 };
