@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+import CardItem from "../../components/CardItem";
 import Pagination from "../../components/Pagination";
 
 const Series = ({ genres, tv, id, page }) => {
@@ -21,8 +22,8 @@ const Series = ({ genres, tv, id, page }) => {
         {genres.map((genre) => (
           <Link href={`/tv/${encodeURIComponent(genre.id)}`} key={genre.id}>
             <p
-              className={`cursor-pointer ${
-                genre.id == id ? " text-black font-bold" : "text-gray-700"
+              className={`cursor-pointer text-black ${
+                genre.id == id && "font-bold"
               }`}
             >
               {genre.name}
@@ -32,23 +33,10 @@ const Series = ({ genres, tv, id, page }) => {
       </div>
       <div className="flex flex-wrap justify-center gap-5 text-center ">
         {tv.map((series) => (
-          <Link
-            href={`/series/${encodeURIComponent(series.id)}`}
-            key={series.id}
-          >
-            <div className="w-56 bg-slate-100 shadow-lg cursor-pointer hover:scale-105 ease-in-out">
-              <Image
-                src={`${BASE_URL}${series.poster_path}`}
-                alt={series.title}
-                width={1080}
-                height={1920}
-                layout="responsive"
-              />
-            </div>
-          </Link>
+          <CardItem key={series.id} data={series} redirect="series" />
         ))}
       </div>
-      <Pagination section="tv" id={id} page={page} />
+      <Pagination section="tv" id={id} page={page} pages="100" />
     </div>
   );
 };

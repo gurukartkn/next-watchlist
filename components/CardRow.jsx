@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import CardItem from "./CardItem";
 
 const CardRow = ({ section, type, title, redirect }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
@@ -24,17 +25,7 @@ const CardRow = ({ section, type, title, redirect }) => {
 
       <div className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide">
         {data?.map((d) => (
-          <Link href={`/${redirect}/${encodeURIComponent(d.id)}`} key={d.id}>
-            <a className="min-w-[100px] md:min-w-[150px] xl:min-w-[250px] left-0 cursor-pointer hover:scale-105 ease-in-out">
-              <Image
-                src={`${BASE_URL}${d.poster_path}`}
-                alt={d.title}
-                width={1080}
-                height={1920}
-                layout="responsive"
-              />
-            </a>
-          </Link>
+          <CardItem key={d.id} redirect={redirect} data={d} />
         ))}
       </div>
     </div>
