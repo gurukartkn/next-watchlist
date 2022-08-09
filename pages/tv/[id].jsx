@@ -11,7 +11,7 @@ const Series = ({ genres, tv, id, page }) => {
   return (
     <div>
       <Head>
-        <title>WatchList | Series | {id}</title>
+        <title>WatchList | TV Shows | {id}</title>
         <meta
           name="description"
           content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"

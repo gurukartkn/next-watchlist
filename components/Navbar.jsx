@@ -40,7 +40,7 @@ const Navbar = () => {
               router.pathname == "/tv" && " font-bold border-b-2 border-black"
             }`}
           >
-            <p>Series</p>
+            <p>TV Shows</p>
           </a>
         </Link>
       </div>

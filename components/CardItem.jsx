@@ -14,7 +14,7 @@ const CardItem = ({ redirect, data }) => {
             height={1920}
             layout="responsive"
           />
-          <div className="hidden group-hover:block absolute bottom-0 p-3 text-black bg-white bg-opacity-20 backdrop-blur-lg rounded-t-sm max-w-[100px] md:max-w-[150px] xl:max-w-[250px]">
+          <div className="hidden lg:group-hover:block absolute bottom-0 p-3 text-black bg-white bg-opacity-20 backdrop-blur-lg rounded-t-sm max-w-[100px] md:max-w-[150px] xl:max-w-[250px]">
             <h1 className="font-bold text-lg">{data?.title}</h1>
             <h1 className="font-bold text-lg">{data?.name}</h1>
             <p className="line-clamp-6">{data?.overview}</p>

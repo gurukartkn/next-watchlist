@@ -96,8 +96,10 @@ const Series = ({ series, similar }) => {
             <div className="flex gap-5 flex-wrap">
               {series?.seasons.map((season) => (
                 <Link
-                  href={`/series/seasons/${encodeURIComponent(season.id)}`}
-                  key="season.id"
+                  href={`/series/${encodeURIComponent(
+                    series.id
+                  )}/${encodeURIComponent(season.season_number)}`}
+                  key={season.id}
                 >
                   <a className="flex flex-col w-[108px] justify-center items-center text-center">
                     {season.name}

@@ -8,7 +8,7 @@ const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/${section}/${type}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/${section}/${type}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&include_adult=false&language=en-US`
       );
       const json = await res.json();
       const array = json.results;
@@ -16,7 +16,7 @@ const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
     };
     const getGenreData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/${section}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=${id}`
+        `https://api.themoviedb.org/3/discover/${section}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_genres=${id}&include_adult=false`
       );
       const json = await res.json();
       const array = json.results;
