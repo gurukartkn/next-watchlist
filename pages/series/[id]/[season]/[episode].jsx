@@ -30,7 +30,7 @@ const Episode = ({ data }) => {
             />
           )}
         </div>
-        <div className="flex flex-col gap-3 xl:gap-5 lg:absolute lg:w-1/3 lg:bg-white lg:bg-opacity-40 lg:backdrop-blur-lg  lg:p-10 lg:rounded-lg lg:shadow-xl">
+        <div className="flex flex-col gap-3 xl:gap-5 lg:absolute lg:w-1/3 lg:bg-white lg:text-slate-900 lg:bg-opacity-40 lg:backdrop-blur-lg  lg:p-10 lg:rounded-lg lg:shadow-xl">
           <p className="text-3xl font-bold text-center xl:text-left xl:text-4xl xl:font-extrabold">
             {data.name}
           </p>

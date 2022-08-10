@@ -4,7 +4,7 @@ import CardRow from "../components/CardRow";
 
 export default function Home() {
   return (
-    <div className="px-5 md:px-10 lg:px-20">
+    <div className=" px-5 md:px-10 lg:px-20">
       <Head>
         <title>WatchList</title>
         <meta

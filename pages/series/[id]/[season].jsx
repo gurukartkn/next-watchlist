@@ -20,12 +20,12 @@ const Seasons = ({ id, season, data }) => {
           layout="responsive"
         />
       </div>
-      <div className="w-full md:h-[75vh] overflow-y-scroll md:w-2/3">
+      <div className="w-full md:h-[81vh] overflow-y-scroll scrollbar-hide md:w-2/3">
         <h2 className="text-xl font-bold text-center">Episodes</h2>
         <div className="p-2 flex flex-wrap gap-3 items-center justify-center">
           {data?.episodes?.map((episode) => (
             <div
-              className="p-3 flex flex-col gap-2 bg-slate-200 rounded-md w-[300px] md:w-full"
+              className="p-3 flex flex-col gap-2 bg-slate-800 rounded-md w-[300px] md:w-full"
               key={episode?.episode_number}
             >
               <Link
@@ -33,8 +33,8 @@ const Seasons = ({ id, season, data }) => {
                   season
                 )}/${encodeURIComponent(episode?.episode_number)}`}
               >
-                <a className="text-lg font-semibold hover:text-slate-900 hover:font-bold">
-                  {episode?.name}
+                <a className="text-lg font-semibold hover:text-slate-200 hover:font-bold">
+                  {episode?.episode_number}. {episode?.name}
                 </a>
               </Link>
               <p className="font-thin line-clamp-3">{episode?.overview}</p>

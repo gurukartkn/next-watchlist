@@ -6,7 +6,7 @@ const Movies = ({ genres }) => {
   return (
     <div className="px-5 md:px-10 lg:px-20">
       <Head>
-        <title>WatchList | Movies</title>
+        <title>Movies | WatchList</title>
         <meta
           name="description"
           content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"

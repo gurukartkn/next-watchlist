@@ -1,9 +1,18 @@
+import Head from "next/head";
+
 import CardItem from "../../components/CardItem";
-import Pagination from "../../components/Pagination";
 
 const searchResults = ({ query, redirect, results }) => {
   return (
     <div>
+      <Head>
+        <title>Search Results | WatchList</title>
+        <meta
+          name="description"
+          content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h3 className="text-center mb-5 font-semibold md:text-xl md:font-bold lg:text-left px-5 md:px-10 lg:px-20 xl:px-36">
         Search results for `{query}`
       </h3>

@@ -8,7 +8,7 @@ const Movie = ({ movies, genres, id, page }) => {
   return (
     <div>
       <Head>
-        <title>WatchList | Movies | {id}</title>
+        <title>Movies | {id} | WatchList</title>
         <meta
           name="description"
           content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"
@@ -19,8 +19,9 @@ const Movie = ({ movies, genres, id, page }) => {
         {genres.map((genre) => (
           <Link href={`/movies/${encodeURIComponent(genre.id)}`} key={genre.id}>
             <a
-              className={`cursor-pointer text-black ${
-                genre.id == id && "font-bold"
+              className={`cursor-pointer ${
+                genre.id == id &&
+                "bg-slate-900 bg-opacity-60 backdrop-blur-lg shadow-lg p-1 px-2 mb-3 rounded-md"
               }`}
             >
               {genre.name}

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-
 import CardItem from "./CardItem";
 
 const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
@@ -39,7 +37,7 @@ const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
         <h1 className="uppercase text-xl font-bold">{title}</h1>
         {id && (
           <Link href={`/${genreRedirect}/${encodeURIComponent(id)}`}>
-            <a className="font-mono bg-slate-200 p-1 px-2 rounded-md">
+            <a className="font-mono bg-slate-900 bg-opacity-60 backdrop-blur-lg shadow-lg p-1 px-2 rounded-md">
               + View all
             </a>
           </Link>

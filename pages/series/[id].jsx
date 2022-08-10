@@ -9,7 +9,7 @@ const Series = ({ series, similar }) => {
   return (
     <div className="px-5 md:px-10 lg:px-20 xl:px-36">
       <Head>
-        <title>WatchList | {series.original_name}</title>
+        <title>{series.name} | WatchList</title>
         <meta name="description" content={series.tagline} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -17,7 +17,7 @@ const Series = ({ series, similar }) => {
         <div className="hidden xl:block xl:w-1/3">
           <Image
             src={`${BASE_URL}${series?.poster_path}`}
-            alt={series?.original_name}
+            alt={series?.name}
             width={1080}
             height={1920}
           />
@@ -42,7 +42,7 @@ const Series = ({ series, similar }) => {
           <div className="flex gap-2">
             {series?.genres.map((genre) => (
               <Link href={`/tv/${encodeURIComponent(genre.id)}`} key="genre.id">
-                <a className="bg-slate-400 p-1 px-2 rounded-full">
+                <a className="bg-slate-900 bg-opacity-60 backdrop-blur-lg shadow-lg p-1 px-2 rounded-md text-white">
                   {genre.name}
                 </a>
               </Link>
@@ -92,7 +92,7 @@ const Series = ({ series, similar }) => {
             </div>
           </div>
           <div>
-            Seasons
+            <h3 className="font-medium">Seasons</h3>
             <div className="flex gap-5 flex-wrap">
               {series?.seasons.map((season) => (
                 <Link

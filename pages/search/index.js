@@ -3,16 +3,19 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { MdSearch } from "react-icons/md";
-
 import ResultCard from "../../components/ResultCard";
 
 const Search = () => {
   const router = useRouter();
   const [state, setState] = useState("movie");
   const [redirect, setRedirect] = useState("movie");
-  const [query, setQuery] = useState(localStorage.getItem("query") || "");
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setQuery(localStorage.getItem("query"));
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("query", query);
@@ -23,7 +26,7 @@ const Search = () => {
         .then((res) => res.json())
         .then((data) => {
           if (!data.errors) {
-            setResults(data.results);
+            setResults(data.results.slice(0, 5));
           } else {
             setResults([]);
           }
@@ -46,7 +49,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex flex-col text-center justify-center items-center">
+    <div className="flex flex-col text-center items-center h-[81vh]">
       <Head>
         <title>WatchList | Search</title>
         <meta
@@ -58,62 +61,60 @@ const Search = () => {
       <div className="flex">
         <button
           onClick={() => setState("movie")}
-          className={`border-2 px-6 p-2 rounded-l-md ${
+          className={`border-2 px-6 p-2 rounded-l-md border-slate-900 ${
             state == "movie"
-              ? "bg-slate-400 border-slate-400 text-white font-semibold"
-              : "border-slate-400 text-slate-400"
+              ? "bg-slate-900  text-white font-semibold"
+              : " text-slate-200"
           }`}
         >
           Movies
         </button>
         <button
           onClick={() => setState("tv")}
-          className={`border-2 px-6 p-2 rounded-r-md ${
+          className={`border-2 px-6 p-2 rounded-r-md border-slate-900 ${
             state == "tv"
-              ? "bg-slate-400 border-slate-400 text-white font-semibold"
-              : "border-slate-400 text-slate-400"
+              ? "bg-slate-900  text-white font-semibold"
+              : " text-slate-200"
           }`}
         >
           TV Shows
         </button>
       </div>
-      <div className="flex w-[75vw] md:gap-5 justify-between items-center">
-        <input
-          type="text"
-          id="search"
-          placeholder={`Search`}
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          className="my-5 py-2 px-5 border-slate-700 border-2 rounded-md w-[55vw] md:w-full"
-        />
-        <button
-          className="py-2 px-5 rounded-md border-2 border-blue-500 disabled:border-gray-500 disabled:text-gray-500"
-          disabled={query.length < 3}
-          onClick={handleRedirect}
-        >
-          <MdSearch size={22} />
-        </button>
-      </div>
-      <div className="flex flex-col justify-center items-center w-[75vw] gap-5">
-        {query != "" && results.length > 0 ? (
-          results.map((result) => (
-            <Link
-              key={result.id}
-              href={`/${redirect}/${encodeURIComponent(result?.id)}`}
-            >
-              <a>
-                <ResultCard result={result} redirect={redirect} />
-              </a>
-            </Link>
-          ))
-        ) : (
-          <div className="text-center">
-            <h1 className="text-2xl font-semibold h-[60vh]">
-              No results found
-            </h1>
-          </div>
-        )}
-      </div>
+
+      <input
+        type="text"
+        id="search"
+        placeholder={`Search`}
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        className="mt-5 py-2 px-5 text-slate-900 bg-slate-50 shadow-lg rounded-md w-[75vw] md:w-[55vw] mb-2"
+      />
+
+      {query != "" && (
+        <div className="flex flex-col justify-center items-center w-[75vw] md:w-[55vw] gap-5 bg-slate-600 shadow-lg bg-opacity-60 backdrop-blur-lg rounded-md p-5">
+          {results.length > 0 ? (
+            results.map((result) => (
+              <Link
+                key={result.id}
+                href={`/${redirect}/${encodeURIComponent(result?.id)}`}
+              >
+                <a>
+                  <ResultCard result={result} redirect={redirect} />
+                </a>
+              </Link>
+            ))
+          ) : (
+            <h1>No results found</h1>
+          )}
+          <button
+            className="font-bold border-b-2"
+            disabled={query.length < 3}
+            onClick={handleRedirect}
+          >
+            More results
+          </button>
+        </div>
+      )}
     </div>
   );
 };

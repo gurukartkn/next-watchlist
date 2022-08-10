@@ -9,7 +9,7 @@ const Movie = ({ movie, recommended, similar }) => {
   return (
     <div className="px-5 md:px-10 lg:px-20 xl:px-36">
       <Head>
-        <title>WatchList | {movie.title}</title>
+        <title>{movie.title} | WatchList</title>
         <meta name="description" content={movie.tagline} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -29,7 +29,7 @@ const Movie = ({ movie, recommended, similar }) => {
             layout="fill"
           />
         </div>
-        <div className="flex flex-col gap-3 xl:gap-5 md:w-1/2 lg:absolute lg:w-1/3 lg:bg-white lg:bg-opacity-40 lg:backdrop-blur-lg  lg:p-10 lg:rounded-lg lg:shadow-xl">
+        <div className="flex flex-col gap-3 xl:gap-5 md:w-1/2 lg:absolute lg:w-1/3 lg:bg-white lg:text-slate-900 lg:bg-opacity-40 lg:backdrop-blur-lg  lg:p-10 lg:rounded-lg lg:shadow-xl">
           <p className="text-3xl font-bold text-center xl:text-left xl:text-4xl xl:font-extrabold">
             {movie?.title}
           </p>
@@ -51,13 +51,13 @@ const Movie = ({ movie, recommended, similar }) => {
               {movie?.release_date}
             </span>
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {movie?.genres.map((genre) => (
               <Link
                 href={`/movies/${encodeURIComponent(genre.id)}`}
                 key="genre.id"
               >
-                <a className="bg-slate-400 lg:bg-white p-1 px-2 rounded-full">
+                <a className="bg-slate-900 bg-opacity-60 backdrop-blur-lg shadow-lg p-1 px-2 rounded-md text-white">
                   {genre.name}
                 </a>
               </Link>

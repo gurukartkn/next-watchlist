@@ -9,7 +9,7 @@ const Series = ({ genres, tv, id, page }) => {
   return (
     <div>
       <Head>
-        <title>WatchList | TV Shows | {id}</title>
+        <title>TV Shows | {id} | WatchList</title>
         <meta
           name="description"
           content="Never forget the movies and series that you wish to watch and maintain a record of previously watched ones"
@@ -19,11 +19,7 @@ const Series = ({ genres, tv, id, page }) => {
       <div className="flex gap-3 md:gap-10 lg:gap-20 px-5 md:px-10 lg:px-20 xl:px-36 overflow-x-scroll scrollbar-hide">
         {genres.map((genre) => (
           <Link href={`/tv/${encodeURIComponent(genre.id)}`} key={genre.id}>
-            <p
-              className={`cursor-pointer text-black ${
-                genre.id == id && "font-bold"
-              }`}
-            >
+            <p className={`cursor-pointer ${genre.id == id && "font-bold"}`}>
               {genre.name}
             </p>
           </Link>
