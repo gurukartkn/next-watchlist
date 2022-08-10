@@ -1,11 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
 
 import CardRow from "../../components/CardRow";
 
 const Movies = ({ genres }) => {
   return (
-    <div className="px-5 md:px-10 lg:px-20 xl:px-36 ">
+    <div className="px-5 md:px-10 lg:px-20">
       <Head>
         <title>WatchList | Movies</title>
         <meta
@@ -15,31 +14,6 @@ const Movies = ({ genres }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        {/* <Latest section="movie" /> */}
-        <CardRow
-          section="movie"
-          type="popular"
-          title="Popular Movies"
-          redirect="movie"
-          genreRedirect="movies"
-          id=""
-        />
-        <CardRow
-          section="movie"
-          type="top_rated"
-          title="Top Rated Movies"
-          redirect="movie"
-          genreRedirect="movies"
-          id=""
-        />
-        <CardRow
-          section="movie"
-          type="upcoming"
-          title="Upcoming Movies"
-          redirect="movie"
-          genreRedirect="movies"
-          id=""
-        />
         {genres.map((genre) => (
           <CardRow
             section="movie"

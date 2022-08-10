@@ -4,7 +4,7 @@ import Image from "next/image";
 const CardItem = ({ redirect, data }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
   return (
-    <div className="shadow-lg min-w-[100px] md:min-w-[150px] xl:min-w-[250px] left-0 cursor-pointer">
+    <div className="inline-block shadow-lg min-w-[100px] md:min-w-[150px] xl:min-w-[250px] left-0 cursor-pointer">
       <Link href={`/${redirect}/${encodeURIComponent(data?.id)}`}>
         <a className="relative group">
           <Image

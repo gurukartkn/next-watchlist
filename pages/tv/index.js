@@ -5,7 +5,7 @@ import CardRow from "../../components/CardRow";
 
 const Series = ({ genres }) => {
   return (
-    <div className="px-5 md:px-10 lg:px-20 xl:px-36 ">
+    <div className="px-5 md:px-10 lg:px-20">
       <Head>
         <title>WatchList | TV Shows</title>
         <meta
@@ -14,7 +14,6 @@ const Series = ({ genres }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Latest section="tv" /> */}
 
       {genres.map((genre) => (
         <CardRow

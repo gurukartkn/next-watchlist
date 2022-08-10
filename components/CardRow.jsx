@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+
 import CardItem from "./CardItem";
 
 const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
   const [data, setData] = useState(null);
+
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
@@ -42,10 +45,12 @@ const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
           </Link>
         )}
       </div>
-      <div className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide">
-        {data?.map((d) => (
-          <CardItem key={d.id} redirect={redirect} data={d} />
-        ))}
+      <div className="relative flex gap-3 justify-center items-center">
+        <div className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide whitespace-nowrap scroll-smooth">
+          {data?.map((d) => (
+            <CardItem key={d.id} redirect={redirect} data={d} />
+          ))}
+        </div>
       </div>
     </div>
   );
