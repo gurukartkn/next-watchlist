@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const CardItem = ({ redirect, data }) => {
-  console.log(data);
   const BASE_URL = "https://image.tmdb.org/t/p/original";
   return (
     <div className="bg-slate-600 bg-opacity-40 backdrop-blur-lg inline-block shadow-lg min-w-[100px] md:min-w-[150px] xl:min-w-[250px] left-0 cursor-pointer hover:scale-105">
