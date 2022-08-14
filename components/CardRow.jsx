@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import CardItem from "./CardItem";
+import { useHorizontalScroll } from "../hooks/useSideScroll";
 
 const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
+  const scrollRef = useHorizontalScroll();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -44,7 +46,10 @@ const CardRow = ({ section, type, title, redirect, genreRedirect, id }) => {
         )}
       </div>
       <div className="relative flex gap-3 justify-center items-center">
-        <div className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide whitespace-nowrap scroll-smooth">
+        <div
+          ref={scrollRef}
+          className="flex py-7 gap-5 overflow-x-scroll scrollbar-hide whitespace-nowrap scroll-smooth"
+        >
           {data?.map((d) => (
             <CardItem key={d.id} redirect={redirect} data={d} />
           ))}
